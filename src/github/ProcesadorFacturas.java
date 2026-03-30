@@ -4,6 +4,8 @@ import java.util.List;
 public class ProcesadorFacturas {
 	
 
+	private static final double descuento_vip = 0.10;
+
 	// SMELL: Nombre de método poco claro y parámetros que podrían ser un objeto
 	public void procesarFactura (List<Double> precios, String nombreCliente, double impuesto, boolean vip) {
 	double total = 0;
@@ -28,7 +30,7 @@ public class ProcesadorFacturas {
 	}
 
 	private double AplicarDescuentovip(double total) {
-		total = total - (total * 0.10);
+		total = total - (total * descuento_vip);
 		return total;
 	}
 
