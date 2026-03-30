@@ -11,7 +11,7 @@ public class ProcesadorFacturas {
 	total = CalcularSumarBase(precios, total);
 	// SMELL: Código duplicado y números "mágicos" (0.10, 0.05)
 	if (vip) {
-	total = total - (total * 0.10);
+	total = AplicarDescuentovip(total);
 	System.out.println("Cliente VIP: " + nombreCliente);
 	System.out.println("Total con descuento: " + total);
 	} else {
@@ -20,6 +20,11 @@ public class ProcesadorFacturas {
 	System.out.println("Total con impuestos: " + total);
 	}
 	// SMELL: Más código duplicado (la impresión del nombre)
+	}
+
+	private double AplicarDescuentovip(double total) {
+		total = total - (total * 0.10);
+		return total;
 	}
 
 	private double CalcularSumarBase(List<Double> precios, double total) {
