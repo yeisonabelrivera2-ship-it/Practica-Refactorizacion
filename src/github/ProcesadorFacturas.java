@@ -15,11 +15,16 @@ public class ProcesadorFacturas {
 	System.out.println("Cliente VIP: " + nombreCliente);
 	System.out.println("Total con descuento: " + total);
 	} else {
-	total = total + (total * impuesto);
+	total = AplicarImpuesto(impuesto, total);
 	System.out.println("Cliente Normal: " + nombreCliente);
 	System.out.println("Total con impuestos: " + total);
 	}
 	// SMELL: Más código duplicado (la impresión del nombre)
+	}
+
+	private double AplicarImpuesto(double impuesto, double total) {
+		total = total + (total * impuesto);
+		return total;
 	}
 
 	private double AplicarDescuentovip(double total) {
