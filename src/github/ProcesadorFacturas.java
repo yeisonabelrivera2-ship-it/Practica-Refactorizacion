@@ -14,14 +14,22 @@ public class ProcesadorFacturas {
 	// SMELL: Código duplicado y números "mágicos" (0.10, 0.05)
 	if (vip) {
 	total = AplicarDescuentovip(total);
-	System.out.println("Cliente VIP: " + nombreCliente);
-	System.out.println("Total con descuento: " + total);
+	mostrarfacturavip(nombreCliente, total);
 	} else {
 	total = AplicarImpuesto(impuesto, total);
 	System.out.println("Cliente Normal: " + nombreCliente);
 	System.out.println("Total con impuestos: " + total);
 	}
 	// SMELL: Más código duplicado (la impresión del nombre)
+	}
+
+	private void mostrarfacturavip(String nombreCliente, double total) {
+		mostrarfacturanormal(nombreCliente, total);
+	}
+
+	private void mostrarfacturanormal(String nombreCliente, double total) {
+		System.out.println("Cliente VIP: " + nombreCliente);
+		System.out.println("Total con descuento: " + total);
 	}
 
 	private double AplicarImpuesto(double impuesto, double total) {
